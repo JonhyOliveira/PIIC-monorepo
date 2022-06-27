@@ -1,0 +1,43 @@
+\begin{thebibliography}{1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\providecommand{\doi}[1]{https://doi.org/#1}
+
+\bibitem{usa-soc-media-usage}
+Auxier, B., Anderson, M.: Social media use in 2021 (2021),
+  \url{https://www.pewresearch.org/internet/wp-content/uploads/sites/9/2021/04/PI\_2021.04.07\_Social-Media-Use\_FINAL.pdf},
+  acedido a 27/06/2022
+
+\bibitem{groupware-def}
+Ellis, C.A., Gibbs, S.J., Rein, G.: Groupware: Some issues and experiences.
+  Commun. ACM  \textbf{34}(1),  39–58 (jan 1991). \doi{10.1145/99977.99987}
+
+\bibitem{eurostat-soc-media-usage}
+eurostat: Individuals using the internet for participating in social networks
+  (2022),
+  \url{https://ec.europa.eu/eurostat/databrowser/bookmark/fe089ebc-7e3a-46b0-a0c3-7ff07f7b68e5?lang=en},
+  acedido a 26/06/2022
+
+\bibitem{digital2022}
+Kemp, S.: Digital 2022: Global overview report (2021),
+  \url{https://datareportal.com/reports/digital-2022-global-overview-report}
+
+\bibitem{collab-def}
+Martinez-Moyano, I.: Exploring the dynamics of collaboration in
+  interorganizational settings (2006)
+
+\bibitem{CRDTs}
+Shapiro, M., Pregui\c{c}a, N., Baquero, C., Zawirski, M.: Conflict-free
+  replicated data types. In: Proceedings of the 13th International Conference
+  on Stabilization, Safety, and Security of Distributed Systems. p. 386–400.
+  SSS'11, Springer-Verlag, Berlin, Heidelberg (2011).
+  \doi{10.1007/978-3-642-24550-3_29},
+  \url{https://dl.acm.org/doi/10.5555/2050613.2050642}
+
+\bibitem{braid-spec}
+Toomim~M., Little~G., W.R., B., B.: Braid-http: Synchronization for http
+  (2020),
+  \url{https://raw.githubusercontent.com/braid-org/braid-spec/master/draft-toomim-httpbis-braid-http-03.txt},
+  acedido a 26/06/2022
+
+\end{thebibliography}

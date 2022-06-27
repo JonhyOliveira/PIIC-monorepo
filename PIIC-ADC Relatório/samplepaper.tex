@@ -1,0 +1,237 @@
+% This is samplepaper.tex, a sample chapter demonstrating the
+% LLNCS macro package for Springer Computer Science proceedings;
+% Version 2.20 of 2017/10/04
+%
+\documentclass[runningheads]{llncs}
+%
+\usepackage{graphicx}
+% Used for displaying a sample figure. If possible, figure files should
+% be included in EPS format.
+%
+% If you use the hyperref package, please uncomment the following line
+% to display URLs in blue roman font according to Springer's eBook style:
+% \renewcommand\UrlFont{\color{blue}\rmfamily}
+
+\begin{document}
+%
+    \title{Web Colaborativa com Braid e CRDTs} 
+    \subtitle{Relatório Final da UC de PIIC}
+    %
+    %\titlerunning{Abbreviated paper title}
+    % If the paper title is too long for the running head, you can set
+    % an abbreviated paper title here
+    %
+    \author{João Oliveira\\Orientado por Nuno Preguiça}
+    %
+    \authorrunning{João Oliveira, sobre orientação de Nuno Preguiça}
+    % First names are abbreviated in the running head.
+    % If there are more than two authors, 'et al.' is used.
+    %
+    \institute{DI - Faculdade de Ciências e Tecnologia - Universidade Nova de Lisboa
+        \email{jfv.oliveira@campus.fct.unl.pt}
+        }
+    %
+    \maketitle              % typeset the header of the contribution
+    %
+    \begin{abstract}
+        Neste relatório é apresentado o trabalho feito ao longo da unidade curricular de PIIC-ADC. Começando por uma apresentação do tema em questão
+
+        \keywords{First keyword, Second keyword, Another keyword.}
+    \end{abstract}
+    %
+    %
+    %
+    \section{Introdução}    
+
+        % o que é a web colaborativa? (introdução ao tema)
+        \subsection{Colaboração e Aplicações {\itshape Web} Colaborativas}
+
+        De uma forma geral, a colaboração é definida como o processo de duas ou mais pessoas, 
+        entidades ou organizações trabalharem em conjunto para completar uma tarefa ou atingir 
+        um objetivo \cite{collab-def}. 
+        Já no contexto da informática, em 1991 Ellis et al. definiram o termo 
+        {\itshape groupware} ({\itshape group} + {\itshape software}) como "sistemas baseados 
+        em computadores que suportam grupos de pessoas envolvidas numa tarefa (ou objetivo) e 
+        que fornecem uma interface para um ambiente compartilhado"\cite{groupware-def} 
+        (traduzido do inglês). 
+
+        Desde esta definição, o {\itshape groupware} evoluiu e as tecnologias que o rodeam 
+        também. Hoje em dia o uso mais habitual de {\itshape groupware} é em aplicações web. 
+        Exemplos destas aplicações incluem: Google Docs, Google Slides, Trello, WhatsApp, 
+        Twitter, Facebook e muitas mais. 
+
+        A característica que as destingue de outras aplicações web é o facto de existir a 
+        noção de um estado partilhado para o qual os utilizadores contribuem com um objetivo 
+        claro, subentendido ou não.
+
+        % porque é que isto é releavante? (apresentação leitor<->tema)
+        \subsection{Popularidade das Aplicações {\itshape Web} Colabrativas}
+        Estas aplicações são tão presentes no nosso dia-a-dia como os próprios dispositivos 
+        que as suportam.
+
+        Em 2021, 57\%\cite{eurostat-soc-media-usage} da população europeia usa ou já usou 
+        redes sociais. No mesmo ano, nos EUA, os valores apontam para tão alto quanto 
+        70\%\cite{usa-soc-media-usage}. Já no oriente, os número não ficam muito aquém, 
+        com a China e a India com valores\footnote{É importante notar que o relatório citado 
+        usa o número de utilizadores bruto, ou seja, não filtra utilizadores falsos ou 
+        duplicados. Não obstante disso, com estas figuras podemos concluir que as redes 
+        sociais são consideravelmente populares no oriente, visto o valor obtido para a 
+        India ser o mais baixo desta região e representar por volta de 1/3 da população.} 
+        de 68\% e 34\%, respetivamente\cite{digital2022}.
+
+        % introdução
+
+        \subsection{{\itshape CRDT}s}
+
+        Os "Tipos de dados Replicados sem Conflito", habitualmente denominados 
+        {\itshape CRDT}s (do inglês {\itshape Conflict Free Replicated Data Type}s), 
+        são abstrações de tipos de dados desenhadas para permitirem a replicação dos 
+        dados por múltiplos processos, modificação sem coordenação e convergência do 
+        estado dos dados partilhados entre réplicas através da troca de mensagens e de 
+        métodos determinísticos\cite{CRDTs}. Isto trás grandes vantagens, pois permite 
+        sincronizar réplicas assíncronamente, garantindo alta disponibilidade e 
+        tolerância a falhas. Ainda mais, com avanços na otimização dos algorítmos de 
+        sincronização, a tecnologia dos {\itshape CRDT}s têm-se vindo a tornar cada 
+        vez mais atrativa como bloco de construção de aplicações distribuidas, tanto 
+        ao nível da sincronização de dados entre servidores\footnote{Exemplo do Redis, 
+        que usa CRDTs para criar bases de dados distribuidas e altamente disponíveis.} 
+        como entre clientes, no caso da colaboração.
+
+        No entanto, no contexto de aplicações web colaborativas, muitas vezes é do 
+        interesse do sistema que exista um intermediário que modere a comunicação entre 
+        os clientes (servidor). Nestes casos, os {\itshape CRDT}s continuam a ser ótimos 
+        candidatos para fazer a sincronização de dados partilhados, pois permitem que os 
+        clientes revertam a um modelo de comunicação fora do sistema, por exemplo no caso 
+        da falha do servidor.
+
+        % a.k.a: o que é que esta treta toda tem a ver com o trabalho?
+        \subsection{Estado da Arte, Problemas e o Protocolo {\itshape Braid}}
+
+        Os {\itshape CRDT}s lidam com muitas das preocupações relativamente à sincronização 
+        de dados. No entanto, um problema que não resolve é como fazer chegar os dados de um 
+        ponto ao outro.
+
+        Atualmente, de uma forma geral, as soluções a este problema recorrem maioritariamente 
+        a modelos de comunicação {\itshape ad-hoc}, tal como comunicação por eventos, usando 
+        {\itshape socket.io} ou {\itshape web-socket}s, ou por {\itshape long-polling}. 
+
+        A escolha destas soluções é claramente por razões práticas. O desenvolvedor da 
+        aplicação colaborativa só terá de preocupar-s em garantir que as mensagens 
+        chegam ao sitio certo. No entanto, isto revela ser danoso para a interoperabilidade 
+        com outros sistemas devido a formatos de mensagem propriatários e incompatibilidades
+        no que toca ao protocolo de transporte utilizado. 
+        
+        No fundo, esforço necessário para que um serviço suporte colaboração com outros 
+        sistemas nem sempre vale a pena, logo grande parte dos serviços colaborativos 
+        dos dias de hoje escolhem criar os seus próprios ecossistemas onde podem escolher
+        e construir as suas ferramentas.
+
+            % apresentação do Braid
+
+            \subsubsection{Braid:} Como resposta a este problema da falta de estandardização, 
+            têm aparecido de comunidades como a "Braid", que imaginam um futuro em que as aplicações 
+            comunicam de uma forma clara e coesa, através de um único protocolo, permitindo integração 
+            nativa com outras aplicações.
+
+            Mais concretamente, a comunidade Braid está a desenvolver um protocolo no contexto da IETF, 
+            convenientemente chamado Braid. 
+
+            Segundo o {\itshape draft} para a IETF, o protocolo Braid é "um conjunto de extensões 
+            que generalizam o protocolo HTTP de um protocolo de transferência de estado para um 
+            protocolo de sincronização de estado [...] colocando o poder de OT e dos CRDTs na web, 
+            melhorando a performance de rede e permitindo aplicações web serem nativamente P2P, 
+            colaborativamente editáveis e {\itshape offline-first}"\cite{braid-spec}. 
+
+
+        \paragraph{Sample Heading (Fourth Level)}
+        The contribution should contain no more than four levels of
+        headings. Table~\ref{tab1} gives a summary of all heading levels.
+
+        \begin{table}
+        \caption{Table captions should be placed above the
+        tables.}\label{tab1}
+        \begin{tabular}{|l|l|l|}
+        \hline
+        Heading level &  Example & Font size and style\\
+        \hline
+        Title (centered) &  {\Large\bfseries Lecture Notes} & 14 point, bold\\
+        1st-level heading &  {\large\bfseries 1 Introduction} & 12 point, bold\\
+        2nd-level heading & {\bfseries 2.1 Printing Area} & 10 point, bold\\
+        3rd-level heading & {\bfseries Run-in Heading in Bold.} Text follows & 10 point, bold\\
+        4th-level heading & {\itshape Lowest Level Heading.} Text follows & 10 point, italic\\
+        \hline
+        \end{tabular}
+        \end{table}
+
+
+        \noindent Displayed equations are centered and set on a separate
+        line.F
+        \begin{equation}
+        x + y = z
+        \end{equation}
+        Please try to avoid rasterized images for line-art diagrams and
+        schemas. Whenever possible, use vector graphics instead (see
+        Fig.~\ref{fig1}).
+
+        %\begin{figure}
+        %\includegraphics[width=\textwidth]{fig1.eps}
+        %\caption{A figure caption is always placed below the illustration.
+        %Please note that short captions are centered, while long ones are
+        %justified by the macro package automatically.} \label{fig1}
+        %\end{figure}
+
+        \begin{theorem}
+        This is a sample theorem. The run-in heading is set in bold, while
+        the following text appears in italics. Definitions, lemmas,
+        propositions, and corollaries are styled the same way.
+        \end{theorem}
+        %
+        % the environments 'definition', 'lemma', 'proposition', 'corollary',
+        % 'remark', and 'example' are defined in the LLNCS documentclass as well.
+        %
+        \begin{proof}
+        Proofs, examples, and remarks have the initial word in italics,
+        while the following text appears in normal font.
+        \end{proof}
+        For citations of references, we prefer the use of square brackets
+        and consecutive numbers. Citations using labels or the author/year
+        convention are also acceptable. The following bibliography provides
+        a sample reference list with entries for journal
+        articles~\cite{ref_article1}, an LNCS chapter~\cite{ref_lncs1}, a
+        book~\cite{ref_book1}, proceedings without editors~\cite{ref_proc1},
+        and a homepage~\cite{ref_url1}. Multiple citations are grouped
+        \cite{ref_article1,ref_lncs1,ref_book1},
+        \cite{ref_article1,ref_book1,ref_proc1,ref_url1}.
+    %
+    % ---- Bibliography ----
+    %
+    % BibTeX users should specify bibliography style 'splncs04'.
+    % References will then be sorted and formatted in the correct style.
+    %
+    % \bibliographystyle{splncs04}
+    % \bibliography{mybibliography}
+    %
+
+    \bibliographystyle{splncs04}
+    \bibliography{refs}
+
+    %\begin{thebibliography}{3}
+
+    %\bibitem{CRDTs}
+    %Shapiro, M., Preguiça, N., Baquero, C., Zawirski, M.: Conflict-free replicated data types. In 13th international conference on Stabilization, safety, and security of distributed systems (SSS'11), pp. 386–400 Springer-Verlag, Berlin, Heidelberg. 
+
+    %\bibitem{groupware-def}
+
+    %\bibitem{braid-spec} It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."
+
+    %\bibitem{collab-def}
+    %Marinez-Moyano, I. J. Exploring the Dynamics of Collaboration in Interorganizational Settings, Ch. 4, p. 83, in Schuman (Editor). Jossey-bass, 2006. ISBN 0-7879-8116-8.
+
+    %\bibitem{digital2022}
+
+    %\bibitem{eurostat-soc-media-usage}
+
+    %\bibitem{usa-soc-media-usage}
+
+    %\end{thebibliography}
+\end{document}
