@@ -1,3 +1,5 @@
+### Aviso: Este documento pode estar desatualizado. Referênciar sempre a versão inglesa.
+
 # 💫 PIIC-monorepo
 Monorepo para o trabalho desenvolvido no âmbito do Programa de Introdução à Investigação Ciêntifica da FCT, na Unidade Curricular de _Atividade de Desenvolvimento Curricular_.
 

@@ -1,5 +1,3 @@
-[(versão portuguesa deste documento aqui)](README.pt.md)
-
 # 💫 PIIC-monorepo
 This monorepo includes all relevant artifacts of the work done under FCT's _Programa de Introdução à Investicação_ for the curricular unit of _Atividade de Desenvolvimento Curricular_.
 
