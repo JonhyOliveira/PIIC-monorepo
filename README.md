@@ -1,8 +1,6 @@
+[(versão portuguesa deste documento aqui)](README.pt.md)
+
 # 💫 PIIC-monorepo
-Monorepo para o trabalho desenvolvido no âmbito do Programa de Introdução à Investigação Ciêntifica da FCT, na Unidade Curricular de _Atividade de Desenvolvimento Curricular_.
-
-Neste monorepo estão todos os artefactos relevantes que foram produzidos no decorrer do trabalho, ao longo do 2º semestre do periodo letivo de 2022.
-
 This monorepo includes all relevant artifacts of the work done under FCT's _Programa de Introdução à Investicação_ for the curricular unit of _Atividade de Desenvolvimento Curricular_.
 
 This work was done during the 2<sup>nd</sup> semester of 2021/22.
