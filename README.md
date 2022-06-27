@@ -8,7 +8,7 @@ This work was done during the 2<sup>nd</sup> semester of 2021/22.
 ## Directories / Modules
 
 - **TejoSynchronizer** is one of the most important artifacts. It's a framework which defines interfaces for the 3 components that were identified as the most important for data synchronization:
-    - 📫 mensengers
+    - 📫 messengers
     - 📦 messages
     - 🔄 synchronizers
 
