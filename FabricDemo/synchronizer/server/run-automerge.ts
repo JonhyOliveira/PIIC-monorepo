@@ -10,6 +10,7 @@ import { parsers } from "../automerge_braid_utils"
 
 TejoSynchronizer.registerMessengerFactory(new URL("braid:"), (...args: any[]) => new BraidServerMessenger(args[0], args[1]))
 TejoSynchronizer.registerSynchronizerFactory(new URL("automerge:"), automergeSynchronizerFactory)
+// @ts-ignore
 parsers("automerge").forEach((parser) => TejoSynchronizer.registerMessageParser(...parser))
 
 const braidify = require("braidify-alt").http_server

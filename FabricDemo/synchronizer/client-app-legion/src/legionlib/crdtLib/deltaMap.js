@@ -334,6 +334,7 @@ var delta_orMap = {
             }
         },
         applyDelta: function (delta, vv, meta) {
+            console.log(delta, this.state)
             var hadEffect = false;
             var change = { added: [], removed: [] };
 
@@ -342,6 +343,10 @@ var delta_orMap = {
             for (var a = 0; a < delta.a.length; a++) {
                 var rID = delta.a[a][0];
                 var opID = delta.a[a][1];
+
+                if (!delta.a[a][2])
+                    continue
+
                 var key = delta.a[a][2][0];
                 var value = delta.a[a][2][1];
                 var removes = delta.a[a][2][2];

@@ -97,6 +97,7 @@ function updateCanvas(canvas: fabric.Canvas, ...args: any[]) {
   // the set intersection of the canvas objects with the objects being synchronized, so should be OK in terms of complexity.
 
   let canvasObjects: { [objectID: string]: fabric.Object } = {}
+  let incompleteObjects: { [objectID: string]: { [key: string]: any } } = {}
 
   // and synced 
   var map: [string, string[]][] = canvasSynchronizer.resource.getValue()
@@ -106,26 +107,72 @@ function updateCanvas(canvas: fabric.Canvas, ...args: any[]) {
 
     let [objectID, key] = objectID_key.split(".")
 
-    let value = x[1]
+    let value = x[1][0]
+
+    console.log(objectID, key, value)
 
     // get canvas object
     if (canvasObjects[objectID]) {
       // @ts-ignore
       canvasObjects[objectID].set(key, value)
     }
-    else {
-      canvas.getObjects().forEach(object => {
-        if ((object as MyObj).id == objectID) {
-          // @ts-ignore
-          object.set(key, value)
-          canvasObjects[objectID] = object
+    else { // does not exist
+      let hit = canvas.getObjects().find((object) => (object as MyObj).id == objectID)
+
+      if (!hit) {
+        // first, cache entry        
+        if (!incompleteObjects[objectID]) {
+          incompleteObjects[objectID] = {}
         }
-      })
+
+        let obj = incompleteObjects[objectID]
+        obj[key] = value
+
+        // the, try to create object
+        if (obj.type === 'rect') {
+          hit = new fabric.Rect()
+        } else if (obj.type === 'circle') {
+          hit = new fabric.Circle()
+        } else if (obj.type === 'triangle') {
+          hit = new fabric.Triangle()
+        } else if (obj.type === "path" && obj.path) {
+          hit = new fabric.Path(obj.path)
+        }
+
+        if (hit) { // object was created
+          console.log("object created");
+          (hit as MyObj).id = objectID
+
+          // set entries found so far
+          Object.entries(incompleteObjects[objectID]).forEach((entry) => {
+            // @ts-ignore
+            hit?.set(entry[0], entry[1])
+          })
+
+          delete incompleteObjects[objectID]
+
+          canvas.add(hit);
+          canvasObjects[objectID] = hit
+        }
+      } else {
+        canvasObjects[objectID] = hit
+        console.log("upsie dupsie:", objectID, key, value, incompleteObjects, canvasObjects)
+      }
+
 
     }
+    canvas.getObjects().forEach(object => {
+      if ((object as MyObj).id == objectID) {
+        // @ts-ignore
+        object.set(key, value)
+        canvasObjects[objectID] = object
+      }
+    })
+
   })
 
   Object.values(canvasObjects).forEach((fObject) => fObject.setCoords())
+  canvas.renderAll()
 
 }
 
