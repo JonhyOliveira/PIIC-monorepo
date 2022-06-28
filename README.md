@@ -14,9 +14,9 @@ This work was done during the 2<sup>nd</sup> semester of 2021/22.
 
 - [**braidjs**](https://github.com/JonhyOliveira/braidjs) is a [fork of a tool](https://github.com/braid-org/braidjs) developed by the [Braid](https://www.braid.org/) organization. Essentially it's a set of extensions to javascript's existing HTTP communication APIs, implementing the Braid Protocol. The changes done to the original repository are minimal and reflect the needs that emerged while developing the Braid messenger present in the `extLibs` module.
 
-- (WYP) **FabricDemo** includes demonstrations of the capabilities of the framework. In this module are the tests presented in the report.
+- (WIP) **FabricDemo** includes demonstrations of the capabilities of the framework. In this module are the tests presented in the report.
 
-- (WYP) **Relatório** is the source code for the report, written in LaTeX  💫
+- (WIP) **Relatório** is the source code for the report, written in LaTeX  💫
 
 
 
