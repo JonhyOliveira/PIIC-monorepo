@@ -3,7 +3,7 @@ import { randomUUID } from "crypto";
 import { ConnectionFactories } from "tejosynchronizer/lib/ConnectionFactoriesStore";
 import { ParsingMessenger } from "tejosynchronizer/lib/MessageParser";
 import { Class, Message, Messenger, ResourceSynchronizer } from "tejosynchronizer/lib/types";
-import logger from "../logging";
+import logger, { metricsLogger } from "../logging";
 
 const DEBUG = false
 
@@ -31,6 +31,10 @@ export class AutoMergeSynchronizer<T> extends ResourceSynchronizer<AutoMerge.Doc
         this.externalMessenger = remoteSource
         this.parsingMessenger = new ParsingMessenger(remoteSource, this.MESSAGE_TYPE)
         this.syncStates = {}
+
+        let doc = AutoMerge.save(this.resource)
+
+        metricsLogger.notice("DS:" + doc.byteLength, doc)
     }
 
     sync(): Promise<boolean> {
@@ -43,6 +47,10 @@ export class AutoMergeSynchronizer<T> extends ResourceSynchronizer<AutoMerge.Doc
                     if (message instanceof AutoMergeSyncMessage && message.message) {
                         const [nextDoc, nextSyncState, patch] =
                             AutoMerge.receiveSyncMessage(this.resource, this.syncStates[fromActorID] || AutoMerge.initSyncState(), message.message)
+
+                        let doc = AutoMerge.save(nextDoc)
+
+                        metricsLogger.notice("DS:" + doc.byteLength, doc)
 
                         if (message.message.length > 0)
                             logger.debug("message from", fromActorID, message)
