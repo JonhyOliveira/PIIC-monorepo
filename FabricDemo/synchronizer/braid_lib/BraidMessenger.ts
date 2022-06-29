@@ -3,6 +3,7 @@ import EventEmitter from "events"
 import { fetch as braid_fetch } from "braidify-alt"
 import { Message, Messenger } from "tejosynchronizer/lib/types"
 import { SwitchMessenger } from "tejosynchronizer/lib/GeneralMessengers"
+import logger, { metricsLogger } from "../logging"
 
 const DEBUG = false
 
@@ -47,8 +48,7 @@ export class BraidClientMessenger extends BraidMessenger {
 
     send(message: BraidMessage) {
 
-        if (DEBUG)
-            console.log("Braid Messenger:", message)
+        metricsLogger.notice("MS", message)
 
         if (!this.connected)
             this.connect(message)
@@ -81,6 +81,7 @@ export class BraidClientMessenger extends BraidMessenger {
     disconnect(initMessage?: BraidMessage) {
         this.abortController.abort()
         this.connected = false
+        this.emit("disconnected")
     }
 
     connect(initMessage: BraidMessage) {
@@ -101,14 +102,13 @@ export class BraidClientMessenger extends BraidMessenger {
         var url = this.resourceURL.toString()
         url = url.replace(/^braid/, "http")
 
-        console.log("Connecting to", url)
+        logger.info("Connecting to " + url)
 
         // TODO braid_fetch could be replaced with XMLHttpRequest for more efficient connection detection
         braid_fetch(url, params)
             // @ts-ignore
             .andThen((version) => {
-                if (DEBUG)
-                    console.log("Got message from remote: ", version)
+                logger.debug("Got message from remote: ", version)
 
                 this.connected = true
                 this.emit("message", new BraidMessage(
@@ -117,13 +117,13 @@ export class BraidClientMessenger extends BraidMessenger {
                 ), version.peer)
             })
             .catch((e: Error) => {
-                console.log(this.peer, "disconnected")
+                logger.info(this.peer + " disconnected")
+                this.disconnect()
+
                 if (this.reconnect) {
                     this.connected = false
                     this.connect(initMessage) // try to reconnect
                 }
-                else
-                    this.disconnect()
             })
 
         this.connected = true
@@ -147,16 +147,13 @@ export class BraidServerMessenger extends BraidMessenger {
         var message = new BraidMessage(req.mergeType, req.peer,
             req.version, req.parents, req.body, req.patches)
 
-        // console.log("put")
+        metricsLogger.notice("MA", message, req.size)
 
         this.emit("message", message)
         req.res.sendStatus(200)
-
     }
 
     send(message: BraidMessage, peer: any, req: any): void {
-
-        // console.log([peer, req && req.method], "messenger")
 
         // use provided connection or default one
         var endpoint = req
@@ -172,8 +169,8 @@ export class BraidServerMessenger extends BraidMessenger {
 
         }
 
-        if (DEBUG)
-            console.info("Sending message:", message, `to ${this.peer}`);
+        logger.debug(`Sending message to ${this.peer}`, message);
+        metricsLogger.notice("MS", message)
 
         endpoint.res.sendVersion({
             version: message.version,
@@ -184,13 +181,10 @@ export class BraidServerMessenger extends BraidMessenger {
             peer: message.peer
         })
 
-        // console.log(endpoint.method, endpoint.res.isSubscription)
-
     }
 
     disconnect() {
-        if (DEBUG)
-            console.log("Disconnected from peer", this.peer)
+        logger.debug("Disconnected from peer", this.peer)
         this.resourceMessenger.removeMessenger(this.activeReq.peer)
         this.activeReq.res.end()
         this.activeReq = undefined
@@ -198,10 +192,7 @@ export class BraidServerMessenger extends BraidMessenger {
 
     connect(req: any) {
 
-        if (DEBUG) {
-            console.log(`Connecting to peer ${req.peer}...`)
-            console.time(`Connection to peer ${req.peer} established`)
-        }
+        logger.debug(`Connecting to peer ${req.peer}...`)
 
         if (!req || (this.activeReq && this.activeReq.res.isSubscription))
             return // already connected or cant connect with given request
@@ -211,17 +202,18 @@ export class BraidServerMessenger extends BraidMessenger {
         this.resourceMessenger.setMessenger(this.activeReq.peer, this)
         this.activeReq.startSubscription({
             onClose: () => {
-                console.log(this.activeReq.peer, "disconnected")
+                logger.info(this.activeReq.peer, "disconnected")
+                this.disconnect()
             }
         })
 
         this.connected = true
-        if (DEBUG)
-            console.timeEnd(`Connection to peer ${req.peer} established`)
 
         // extract message from headers (this should be a GET request, so no body)
         var message = new BraidMessage(this.activeReq.mergeType, this.activeReq.peer,
             this.activeReq.version, this.activeReq.parents, undefined, undefined)
+
+        metricsLogger.notice("MA", message, req.size)
 
         this.emit("message", message, this.peer, this.activeReq)
     }

@@ -3,6 +3,7 @@ import { randomUUID } from "crypto";
 import { ConnectionFactories } from "tejosynchronizer/lib/ConnectionFactoriesStore";
 import { ParsingMessenger } from "tejosynchronizer/lib/MessageParser";
 import { Class, Message, Messenger, ResourceSynchronizer } from "tejosynchronizer/lib/types";
+import logger from "../logging";
 
 const DEBUG = false
 
@@ -43,11 +44,8 @@ export class AutoMergeSynchronizer<T> extends ResourceSynchronizer<AutoMerge.Doc
                         const [nextDoc, nextSyncState, patch] =
                             AutoMerge.receiveSyncMessage(this.resource, this.syncStates[fromActorID] || AutoMerge.initSyncState(), message.message)
 
-                        if (DEBUG) {
-                            console.log("New patch: ", patch)
-                            if (message.message.length > 0)
-                                console.log("message from", fromActorID, message)
-                        }
+                        if (message.message.length > 0)
+                            logger.debug("message from", fromActorID, message)
 
                         this.resource = nextDoc
                         this.syncStates[fromActorID] = nextSyncState
@@ -60,7 +58,7 @@ export class AutoMergeSynchronizer<T> extends ResourceSynchronizer<AutoMerge.Doc
                         }
                     } else { // message is unusable treat as hello
                         if (!this.syncStates[fromActorID]) {
-                            console.log("New peer:", fromActorID)
+                            logger.info("New peer:" + fromActorID)
                             this.syncStates[fromActorID] = AutoMerge.initSyncState()
                             this.parsingMessenger.send(new AutoMergeHello(AutoMerge.getActorId(this.resource), []))
                         }
@@ -100,8 +98,8 @@ export class AutoMergeSynchronizer<T> extends ResourceSynchronizer<AutoMerge.Doc
                     this.docParents), actorID, ...aditionalArgs)
         })
 
-        if (DEBUG && newPeerStates.length > 0)
-            console.log("updated", newPeerStates.map(pss => pss[0]))
+        if (newPeerStates.length > 0)
+            logger.debug("updated", newPeerStates.map(pss => pss[0]))
 
         // update peers sync state
         newPeerStates.forEach(newPeerState => this.syncStates[newPeerState[0]] = newPeerState[1])

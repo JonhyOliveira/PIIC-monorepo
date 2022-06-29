@@ -79,6 +79,20 @@ function updateCanvas(canvas: fabric.Canvas, patch: AutoMerge.Patch) {
 
       }
     }
+    else {
+      console.log("object removed:", objID)
+
+      // find object to remove
+      let canvasObj = canvas.getObjects().find(cObj => {
+        if ((cObj as MyObj).id == objID) {
+          return cObj
+        }
+      })
+
+      canvasObj && canvas.remove(canvasObj)
+
+      canvas.renderAll()
+    }
   })
 }
 
