@@ -1,6 +1,7 @@
 import io from 'socket.io-client'
 import { fabric } from 'fabric'
-import { MyObj } from './App'
+import { MyObj } from './canvas-tester'
+import logger from '../logging'
 
 const socket = io("http://localhost:8080")
 
@@ -12,6 +13,7 @@ type Data = {
 // emitters
 export const emitAdd = (obj: Data) => {
     socket.emit('object-added', obj)
+    logger.alert(socket.connected)
 }
 
 export const emitModify = (obj: Data) => {

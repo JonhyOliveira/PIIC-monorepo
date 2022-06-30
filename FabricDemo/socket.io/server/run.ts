@@ -1,14 +1,14 @@
 import express from "express"
 const app = express()
 
-import path from "path"
-app.use(express.static("../client-app/build"))
+app.use(express.static("../../client-app/build"))
 
 const server = app.listen(8080, () => {
-    console.log("Server listening @", server.address())
+    logger.notice("Server listening @ " + JSON.stringify(server.address()))
 })
 
 import { Server } from "socket.io";
+import logger from "../logging"
 const io = new Server(server);
 
 import fabricPlugin from "./socket"

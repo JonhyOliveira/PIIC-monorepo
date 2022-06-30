@@ -1,21 +1,21 @@
-PWD /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/PIIC-ADC Relatório Final
+PWD /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório
 INPUT /etc/texmf/web2c/texmf.cnf
 INPUT /usr/share/texmf/web2c/texmf.cnf
 INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
-INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/PIIC-ADC Relatório Final/samplepaper.tex
-OUTPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/PIIC-ADC Relatório Final/samplepaper.log
-INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/PIIC-ADC Relatório Final/llncs.cls
-INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/PIIC-ADC Relatório Final/llncs.cls
-INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/PIIC-ADC Relatório Final/llncs.cls
-INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/PIIC-ADC Relatório Final/llncs.cls
-INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/PIIC-ADC Relatório Final/llncs.cls
-INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/PIIC-ADC Relatório Final/llncs.cls
-INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/PIIC-ADC Relatório Final/llncs.cls
-INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/PIIC-ADC Relatório Final/llncs.cls
-INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/PIIC-ADC Relatório Final/llncs.cls
-INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/PIIC-ADC Relatório Final/llncs.cls
-INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/PIIC-ADC Relatório Final/llncs.cls
+INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.tex
+OUTPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.log
+INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/llncs.cls
+INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/llncs.cls
+INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/llncs.cls
+INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/llncs.cls
+INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/llncs.cls
+INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/llncs.cls
+INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/llncs.cls
+INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/llncs.cls
+INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/llncs.cls
+INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/llncs.cls
+INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/llncs.cls
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -116,10 +116,10 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 INPUT /usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 INPUT /usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 INPUT /usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/PIIC-ADC Relatório Final/samplepaper.aux
-INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/PIIC-ADC Relatório Final/samplepaper.aux
-INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/PIIC-ADC Relatório Final/samplepaper.aux
-OUTPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/PIIC-ADC Relatório Final/samplepaper.aux
+INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.aux
+INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.aux
+INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.aux
+OUTPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.aux
 INPUT /usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -155,14 +155,14 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi9.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy9.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm
-OUTPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/PIIC-ADC Relatório Final/samplepaper.pdf
+OUTPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.pdf
 INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti9.tfm
-INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/PIIC-ADC Relatório Final/samplepaper.bbl
-INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/PIIC-ADC Relatório Final/samplepaper.bbl
-INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/PIIC-ADC Relatório Final/samplepaper.bbl
-INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/PIIC-ADC Relatório Final/samplepaper.bbl
-INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/PIIC-ADC Relatório Final/samplepaper.aux
+INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.bbl
+INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.bbl
+INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.bbl
+INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.bbl
+INPUT /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.aux
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb

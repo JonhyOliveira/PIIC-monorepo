@@ -2,7 +2,7 @@ import "./App.css";
 import React, { useState, useEffect } from 'react';
 import { fabric } from 'fabric';
 import { v1 as uuid } from 'uuid'
-import { emitAdd, emitModify, modifyObj, addObj } from "./socket-client"
+import { emitAdd, emitModify, modifyObj, addObj, removeObj } from "./socket-client"
 
 export type MyObj = fabric.Object & { id: string }
 
@@ -53,18 +53,9 @@ const App = () => {
           }
         })
 
-        canvas.on('object:moving', function (options) {
-          if (options.target) {
-            const modifiedObj = {
-              obj: options.target,
-              id: (options.target as MyObj).id,
-            }
-            emitModify(modifiedObj)
-          }
-        })
-
         modifyObj(canvas)
         addObj(canvas)
+        removeObj(canvas)
       }
     },
     [canvas]
