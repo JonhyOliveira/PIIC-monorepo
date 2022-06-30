@@ -1,0 +1,8 @@
+services:
+    server:
+        image: jfvoliveira2001/fabricdemo-synchronizer
+        command: node synchronizer/out/server/run-automerge.js
+
+    client:
+        image: jfvoliveira2001/fabricdemo-synchronizer
+        command: node synchronizer/out/client/run-test.js

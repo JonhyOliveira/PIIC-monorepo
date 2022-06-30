@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "rm -rf out/ && tsc && mkdir out/client-app-automerge && cp -r src/client-app-automerge/build out/client-app-automerge/build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

@@ -9,7 +9,6 @@ import AutoMerge from "automerge"
 import { parsers } from "../automerge_braid_utils"
 import logger, { stream } from "../logging"
 import morgan from "morgan"
-import { IncomingMessage } from "http"
 
 TejoSynchronizer.registerMessengerFactory(new URL("braid:"), (...args: any[]) => new BraidServerMessenger(args[0], args[1]))
 TejoSynchronizer.registerSynchronizerFactory(new URL("automerge:"), automergeSynchronizerFactory)
@@ -71,9 +70,13 @@ function resourceMounter<T>(URI: URL, doc?: AutoMerge.Doc<T>) {
     }
 }
 
+import path from "path"
+console.log(__dirname, path.join(__dirname, "../../client-app-automerge/build"))
+
 {
+
     // @ts-ignore
-    app.use(express.static("../../client-app-automerge/build"), morgan('combined', { stream: stream }))
+    app.use(express.static(path.join(__dirname, "../client-app-automerge/build")), morgan('combined', { stream: stream }))
     app.use("/api/doc1", cors, braidify, jsonParser, resourceMounter(new URL("automerge:")))
     app.use("/api/doc2", cors, braidify, jsonParser, resourceMounter(new URL("automerge:")))
 }

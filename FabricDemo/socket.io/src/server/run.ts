@@ -1,7 +1,8 @@
 import express from "express"
 const app = express()
 
-app.use(express.static("../../client-app/build"))
+import path from "path"
+app.use(express.static(path.join(__dirname, "../client-app/build")))
 
 const server = app.listen(8080, () => {
     logger.notice("Server listening @ " + JSON.stringify(server.address()))

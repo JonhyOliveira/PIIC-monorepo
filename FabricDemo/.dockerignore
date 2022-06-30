@@ -1,0 +1,7 @@
+*
+
+!socket.io/out
+!socket.io/package*.json
+
+!synchronizer/out
+!synchronizer/package*.json

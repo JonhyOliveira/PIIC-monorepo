@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "rm -rf out/ && tsc && mkdir out/client-app && cp -r src/client-app/build out/client-app/build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
