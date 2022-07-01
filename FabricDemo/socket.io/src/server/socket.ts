@@ -1,13 +1,14 @@
 import { Server } from "socket.io"
 import logger, { metricsLogger } from "../logging";
 
+var version = -1
+
 export default function (io: Server) {
 
     io.on("connection", socket => {
 
         socket.use((event, next) => {
-            logger.notice(`event by ${socket.id}`, event)
-
+            logger.notice(`MA:${event[0]}@${socket.id}`, new TextEncoder().encode(event[1]).length)
             next()
         })
 

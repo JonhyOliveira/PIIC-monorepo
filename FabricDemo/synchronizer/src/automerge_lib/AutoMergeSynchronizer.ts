@@ -34,7 +34,7 @@ export class AutoMergeSynchronizer<T> extends ResourceSynchronizer<AutoMerge.Doc
 
         let doc = AutoMerge.save(this.resource)
 
-        metricsLogger.notice("DS:" + doc.byteLength, doc)
+        metricsLogger.notice("DS", doc.byteLength)
     }
 
     sync(): Promise<boolean> {
@@ -50,7 +50,7 @@ export class AutoMergeSynchronizer<T> extends ResourceSynchronizer<AutoMerge.Doc
 
                         let doc = AutoMerge.save(nextDoc)
 
-                        metricsLogger.notice("DS:" + doc.byteLength, doc)
+                        metricsLogger.notice("DS", doc.byteLength)
 
                         if (message.message.length > 0)
                             logger.debug("message from", fromActorID, message)

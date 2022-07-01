@@ -1,6 +1,6 @@
 import { TestingCanvas } from "./canvas-tester"
 import yargs from "yargs"
-import logger from "../logging"
+import logger, { metricsLogger } from "../logging"
 
 const sleep = (ms: number) => new Promise(r => setTimeout(r, ms))
 
@@ -65,6 +65,7 @@ const args = yargs
     .parseSync()
 
 async function simulateClient(client: TestingCanvas) {
+    metricsLogger.notice("New client", client.clientID)
 
     // wait for network
     await sleep(args.maximumThinkTime)
@@ -75,7 +76,7 @@ async function simulateClient(client: TestingCanvas) {
 
         // get next action to execute
         let action = client.nextAction()
-        logger.notice(`next action: ${action?.label}`)
+        logger.notice(`NA:${action?.label}`, client.clientID)
 
         // think about next action
         await sleep(waitScale * Math.floor(Math.random() * (args.maximumThinkTime - args.minimumThinkTime) + args.minimumThinkTime))

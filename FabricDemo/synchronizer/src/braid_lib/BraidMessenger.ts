@@ -48,7 +48,9 @@ export class BraidClientMessenger extends BraidMessenger {
 
     send(message: BraidMessage) {
 
-        metricsLogger.notice("MS", message)
+        const m = { ...message }
+        m.body = "..."
+        metricsLogger.notice(`MS:B@${m.peer}`, m)
 
         if (!this.connected)
             this.connect(message)
@@ -72,7 +74,6 @@ export class BraidClientMessenger extends BraidMessenger {
 
             var url = this.resourceURL.toString()
             url = url.replace(/^braid/, "http")
-
 
             braid_fetch(url, params)
 
@@ -110,11 +111,17 @@ export class BraidClientMessenger extends BraidMessenger {
             .andThen((version) => {
                 logger.debug("Got message from remote: ", version)
 
-                this.connected = true
-                this.emit("message", new BraidMessage(
+                let message = new BraidMessage(
                     version["Merge-Type"], version.peer, version.version,
                     version.parents, JSON.parse(version.body), version.patches
-                ), version.peer)
+                )
+
+                const m = { ...message }
+                m.body = "..."
+                metricsLogger.notice(`MA:B@${m.peer}`, m)
+
+                this.connected = true
+                this.emit("message", message, version.peer)
             })
             .catch((e: Error) => {
                 logger.info(this.peer + " disconnected")
@@ -147,7 +154,10 @@ export class BraidServerMessenger extends BraidMessenger {
         var message = new BraidMessage(req.mergeType, req.peer,
             req.version, req.parents, req.body, req.patches)
 
-        metricsLogger.notice("MA", message, req.size)
+        const m = { ...message }
+        m.body = "..."
+
+        metricsLogger.notice(`MA:B@${m.peer}`, m, req.size)
 
         this.emit("message", message)
         req.res.sendStatus(200)
@@ -170,7 +180,10 @@ export class BraidServerMessenger extends BraidMessenger {
         }
 
         logger.debug(`Sending message to ${this.peer}`, message);
-        metricsLogger.notice("MS", message)
+        const m = { ...message }
+        m.body = "..."
+
+        metricsLogger.notice("MS", m)
 
         endpoint.res.sendVersion({
             version: message.version,
@@ -213,7 +226,10 @@ export class BraidServerMessenger extends BraidMessenger {
         var message = new BraidMessage(this.activeReq.mergeType, this.activeReq.peer,
             this.activeReq.version, this.activeReq.parents, undefined, undefined)
 
-        metricsLogger.notice("MA", message, req.size)
+        const m = { ...message }
+        m.body = "..."
+
+        metricsLogger.notice(`MA:B@${m.peer}`, m, req.size)
 
         this.emit("message", message, this.peer, this.activeReq)
     }

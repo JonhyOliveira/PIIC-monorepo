@@ -54,7 +54,7 @@ function resourceMounter<T>(URI: URL, doc?: AutoMerge.Doc<T>) {
             let con: BraidServerMessenger | undefined = subscribersMessenger.getMessenger(req.peer)
             if (!con) {
                 // @ts-ignore
-                logger.debug("new", req.peer, subscribersMessenger.messengers)
+                logger.debug("new messenger created", req.peer, subscribersMessenger.messengers)
                 con = (ConnectionFactories.create(url, req, subscribersMessenger) as BraidServerMessenger)
                 // @ts-ignore
                 subscribersMessenger.setMessenger(req.peer, con)

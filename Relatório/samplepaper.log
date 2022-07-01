@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2022.6.24)  30 JUN 2022 09:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2022.6.24)  1 JUL 2022 00:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -209,100 +209,76 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 31.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 31.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 87.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 87.
  [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 140.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 140.
+ [2]
 
-LaTeX Warning: Reference `fig1' on page 3 undefined on input line 198.
-
-
-LaTeX Warning: Citation `ref_article1' on page 3 undefined on input line 223.
-
-
-LaTeX Warning: Citation `ref_lncs1' on page 3 undefined on input line 223.
-
-
-LaTeX Warning: Citation `ref_book1' on page 3 undefined on input line 224.
+LaTeX Warning: Reference `fig1' on page 3 undefined on input line 192.
 
 
-LaTeX Warning: Citation `ref_proc1' on page 3 undefined on input line 224.
+LaTeX Warning: Citation `ref_article1' on page 3 undefined on input line 217.
 
 
-LaTeX Warning: Citation `ref_url1' on page 3 undefined on input line 225.
+LaTeX Warning: Citation `ref_lncs1' on page 3 undefined on input line 217.
 
 
-LaTeX Warning: Citation `ref_article1' on page 3 undefined on input line 226.
+LaTeX Warning: Citation `ref_book1' on page 3 undefined on input line 218.
 
 
-LaTeX Warning: Citation `ref_lncs1' on page 3 undefined on input line 226.
+LaTeX Warning: Citation `ref_proc1' on page 3 undefined on input line 218.
 
 
-LaTeX Warning: Citation `ref_book1' on page 3 undefined on input line 226.
+LaTeX Warning: Citation `ref_url1' on page 3 undefined on input line 219.
 
 
-LaTeX Warning: Citation `ref_article1' on page 3 undefined on input line 227.
+LaTeX Warning: Citation `ref_article1' on page 3 undefined on input line 220.
 
 
-LaTeX Warning: Citation `ref_book1' on page 3 undefined on input line 227.
+LaTeX Warning: Citation `ref_lncs1' on page 3 undefined on input line 220.
 
 
-LaTeX Warning: Citation `ref_proc1' on page 3 undefined on input line 227.
+LaTeX Warning: Citation `ref_book1' on page 3 undefined on input line 220.
 
 
-LaTeX Warning: Citation `ref_url1' on page 3 undefined on input line 227.
-
-(/home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.bbl [3]
-Underfull \hbox (badness 10000) in paragraph at lines 7--10
-[]\OT1/cmr/m/n/9 Auxier, B., An-der-son, M.: So-cial me-dia use in
- []
+LaTeX Warning: Citation `ref_article1' on page 3 undefined on input line 221.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 7--10
-\OT1/cmr/m/n/9 2021 (2021), https://www.pewresearch.org/internet/wp-
- []
+LaTeX Warning: Citation `ref_book1' on page 3 undefined on input line 221.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 7--10
-\OT1/cmr/m/n/9 content/uploads/sites/9/2021/04/PI[]2021.04.07[]Social-Media-Use[]FINAL.pdf,
- []
+LaTeX Warning: Citation `ref_proc1' on page 3 undefined on input line 221.
 
 
-Underfull \hbox (badness 1270) in paragraph at lines 16--20
-[]\OT1/cmr/m/n/9 eurostat: In-di-vid-u-als us-ing the in-ter-net for par-tic-i-pat-ing in so-cial net-works
- []
+LaTeX Warning: Citation `ref_url1' on page 3 undefined on input line 221.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 22--24
-[]\OT1/cmr/m/n/9 Kemp, S.: Dig-i-tal 2022: Global overview re-port (2021),
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 38--42
+(/home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 23--27
 \OT1/cmr/m/n/9 https://raw.githubusercontent.com/braid-org/braid-spec/master/draft-toomim-
  []
 
-) [4] (/home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.aux)
+) [3] (/home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 1680 strings out of 481176
- 24857 string characters out of 5914226
- 309781 words of memory out of 5000000
- 18648 multiletter control sequences out of 15000+600000
+ 1676 strings out of 481176
+ 24779 string characters out of 5914226
+ 310772 words of memory out of 5000000
+ 18644 multiletter control sequences out of 15000+600000
  408296 words of font info for 43 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  68i,9n,74p,281b,234s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.pdf (4 pages, 165734 bytes).
+Output written on /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.pdf (3 pages, 162291 bytes).
 PDF statistics:
- 65 PDF objects out of 1000 (max. 8388607)
- 46 compressed objects within 1 object stream
+ 62 PDF objects out of 1000 (max. 8388607)
+ 44 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

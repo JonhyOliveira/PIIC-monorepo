@@ -1,15 +1,15 @@
 # Fdb version 3
-["bibtex samplepaper"] 1656545423 "samplepaper.aux" "samplepaper.bbl" "samplepaper" 1656576567
+["bibtex samplepaper"] 1656632883 "samplepaper.aux" "samplepaper.bbl" "samplepaper" 1656632883
   "./splncs04.bst" 1656331364 32146 ee21ae2a29028dc8ad842a97200982c7 ""
   "refs.bib" 1656331364 4415 96d7ccadd8363741e034b4194c7e513a ""
-  "samplepaper.aux" 1656576567 1935 d1ef4b22d66fcb8f3610abde973eff45 "pdflatex"
+  "samplepaper.aux" 1656632883 1601 952c771bb91c88c067fdd817d4d18e98 "pdflatex"
   (generated)
   "samplepaper.blg"
   "samplepaper.bbl"
-["pdflatex"] 1656576566 "/home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.tex" "/home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.pdf" "samplepaper" 1656576567
+["pdflatex"] 1656632883 "/home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.tex" "/home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.pdf" "samplepaper" 1656632883
   "/etc/texmf/web2c/texmf.cnf" 1656073531 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.aux" 1656576567 1935 d1ef4b22d66fcb8f3610abde973eff45 ""
-  "/home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.tex" 1656576566 13018 fcf02093dbd905d709a82c6451865714 ""
+  "/home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.aux" 1656632883 1601 952c771bb91c88c067fdd817d4d18e98 ""
+  "/home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.tex" 1656632883 12437 28f16cfd2e778d3f93efd5ba6ba880cd ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
@@ -56,12 +56,12 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1656073538 165012 f177baa1c39a3ebd62c3096a43521a0d ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1656073540 1313631 b38e4d61ed9c51ffd93e58bd092ff9ae ""
   "llncs.cls" 1656331364 42294 2e448be633a7384490d8a95a08572607 ""
-  "samplepaper.aux" 1656576567 1935 d1ef4b22d66fcb8f3610abde973eff45 "pdflatex"
-  "samplepaper.bbl" 1656545423 1746 8ea630c6f8ae50623ed7c0136dc26202 "bibtex samplepaper"
-  "samplepaper.tex" 1656576566 13018 fcf02093dbd905d709a82c6451865714 ""
+  "samplepaper.aux" 1656632883 1601 952c771bb91c88c067fdd817d4d18e98 "pdflatex"
+  "samplepaper.bbl" 1656632883 1101 d0ae50112e8c67c0def6c661400a57c5 "bibtex samplepaper"
+  "samplepaper.tex" 1656632883 12437 28f16cfd2e778d3f93efd5ba6ba880cd ""
   (generated)
+  "/home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.pdf"
+  "/home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.log"
   "samplepaper.log"
   "samplepaper.pdf"
   "samplepaper.aux"
-  "/home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.pdf"
-  "/home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.log"

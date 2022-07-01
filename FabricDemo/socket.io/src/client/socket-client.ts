@@ -4,24 +4,26 @@ import { MyObj } from './canvas-tester'
 import logger from '../logging'
 
 const socket = io("http://localhost:8080")
+var version = -1
 
 type Data = {
     obj: fabric.Object,
     id: string
 }
 
+type VersionedData = Data & { version: number }
+
 // emitters
 export const emitAdd = (obj: Data) => {
-    socket.emit('object-added', obj)
-    logger.alert(socket.connected)
+    socket.emit('object-added', { ...obj, version })
 }
 
 export const emitModify = (obj: Data) => {
-    socket.emit('object-modified', obj)
+    socket.emit('object-added', { ...obj, version })
 }
 
 export const emitRemove = (obj: Data) => {
-    socket.emit('object-removed', obj)
+    socket.emit('object-added', { ...obj, version })
 }
 
 // listeners

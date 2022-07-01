@@ -219,6 +219,8 @@ export class TestingCanvas implements Testable {
     private canvasObject: fabric.Canvas
     private canvasSynchronizer: AutoMergeSynchronizer<DocType>
 
+    readonly clientID: string
+
     private maxObjects: number
 
     constructor(maxObjects: number, canvasURL: URL) {
@@ -228,6 +230,8 @@ export class TestingCanvas implements Testable {
         this.canvasObject = new fabric.Canvas(null)
 
         this.canvasSynchronizer = (TejoSynchronizer.default.getSynchronizer(new URL("automerge:"), canvasURL, AutoMerge.init()) as AutoMergeSynchronizer<DocType>)
+
+        this.clientID = AutoMerge.getActorId(this.canvasSynchronizer.resource)
 
         synchronizeCanvas(this.canvasObject, this.canvasSynchronizer)
 
