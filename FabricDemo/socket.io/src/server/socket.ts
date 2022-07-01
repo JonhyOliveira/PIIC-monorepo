@@ -9,6 +9,7 @@ export default function (io: Server) {
 
         socket.use((event, next) => {
             logger.notice(`MA:${event[0]}@${socket.id}`, new TextEncoder().encode(event[1]).length)
+            version++
             next()
         })
 
