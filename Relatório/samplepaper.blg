@@ -3,52 +3,56 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: samplepaper.aux
 The style file: splncs04.bst
 Database file #1: refs.bib
+Warning--entry type for "digital2022" isn't style-file defined
+--line 46 of file refs.bib
+Warning--entry type for "eurostat-soc-media-usage" isn't style-file defined
+--line 58 of file refs.bib
+Warning--entry type for "usa-soc-media-usage" isn't style-file defined
+--line 70 of file refs.bib
 Warning--I didn't find a database entry for "ref_article1"
 Warning--I didn't find a database entry for "ref_lncs1"
 Warning--I didn't find a database entry for "ref_book1"
 Warning--I didn't find a database entry for "ref_proc1"
 Warning--I didn't find a database entry for "ref_url1"
-Warning--empty chapter and pages in collab-def
-Warning--missing publisher in collab-def
-You've used 4 entries,
+You've used 6 entries,
             2850 wiz_defined-function locations,
-            632 strings with 5496 characters,
-and the built_in function-call counts, 2226 in all, are:
-= -- 190
-> -- 58
+            647 strings with 5919 characters,
+and the built_in function-call counts, 2921 in all, are:
+= -- 245
+> -- 77
 < -- 3
-+ -- 24
-- -- 20
-* -- 138
-:= -- 280
++ -- 32
+- -- 26
+* -- 178
+:= -- 366
 add.period$ -- 6
-call.type$ -- 4
-change.case$ -- 24
+call.type$ -- 6
+change.case$ -- 36
 chr.to.int$ -- 0
 cite$ -- 6
-duplicate$ -- 207
-empty$ -- 197
-format.name$ -- 23
-if$ -- 495
+duplicate$ -- 266
+empty$ -- 272
+format.name$ -- 30
+if$ -- 648
 int.to.chr$ -- 0
-int.to.str$ -- 4
-missing$ -- 37
-newline$ -- 18
-num.names$ -- 8
-pop$ -- 66
+int.to.str$ -- 6
+missing$ -- 48
+newline$ -- 24
+num.names$ -- 12
+pop$ -- 102
 preamble$ -- 1
-purify$ -- 18
+purify$ -- 25
 quote$ -- 0
-skip$ -- 79
+skip$ -- 94
 stack$ -- 0
-substring$ -- 115
-swap$ -- 118
+substring$ -- 145
+swap$ -- 145
 text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 14
-warning$ -- 2
-while$ -- 15
-width$ -- 5
-write$ -- 48
-(There were 7 warnings)
+type$ -- 24
+warning$ -- 0
+while$ -- 21
+width$ -- 7
+write$ -- 67
+(There were 8 warnings)

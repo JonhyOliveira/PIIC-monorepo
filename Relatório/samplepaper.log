@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2022.6.24)  1 JUL 2022 00:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2022.6.24)  4 JUL 2022 23:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -172,20 +172,20 @@ File: l3backend-pdftex.def 2020-01-29 L3 backend support: PDF output (pdfTeX)
 ) (/home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.aux)
 \openout1 = `samplepaper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count282
@@ -206,79 +206,114 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 31.
+(Font)              <7> on input line 32.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 31.
+(Font)              <5> on input line 32.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 140.
+(Font)              <9> on input line 110.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 140.
- [2]
+(Font)              <6> on input line 110.
+ [2] [3]
+<./images/Interfaces.png, id=24, 878.28125pt x 361.35pt>
+File: ./images/Interfaces.png Graphic file (type png)
+<use ./images/Interfaces.png>
+Package pdftex.def Info: ./images/Interfaces.png  used on input line 212.
+(pdftex.def)             Requested size: 347.12354pt x 142.81714pt.
 
-LaTeX Warning: Reference `fig1' on page 3 undefined on input line 192.
-
-
-LaTeX Warning: Citation `ref_article1' on page 3 undefined on input line 217.
-
-
-LaTeX Warning: Citation `ref_lncs1' on page 3 undefined on input line 217.
-
-
-LaTeX Warning: Citation `ref_book1' on page 3 undefined on input line 218.
+Overfull \hbox (15.0pt too wide) in paragraph at lines 212--213
+[][] 
+ []
 
 
-LaTeX Warning: Citation `ref_proc1' on page 3 undefined on input line 218.
+LaTeX Warning: Reference `fig1' on page 4 undefined on input line 241.
 
 
-LaTeX Warning: Citation `ref_url1' on page 3 undefined on input line 219.
+LaTeX Warning: Citation `ref_article1' on page 4 undefined on input line 266.
 
 
-LaTeX Warning: Citation `ref_article1' on page 3 undefined on input line 220.
+LaTeX Warning: Citation `ref_lncs1' on page 4 undefined on input line 266.
 
 
-LaTeX Warning: Citation `ref_lncs1' on page 3 undefined on input line 220.
+LaTeX Warning: Citation `ref_book1' on page 4 undefined on input line 267.
 
 
-LaTeX Warning: Citation `ref_book1' on page 3 undefined on input line 220.
+LaTeX Warning: Citation `ref_proc1' on page 4 undefined on input line 267.
 
 
-LaTeX Warning: Citation `ref_article1' on page 3 undefined on input line 221.
+LaTeX Warning: Citation `ref_url1' on page 4 undefined on input line 268.
 
 
-LaTeX Warning: Citation `ref_book1' on page 3 undefined on input line 221.
+LaTeX Warning: Citation `ref_article1' on page 4 undefined on input line 269.
 
 
-LaTeX Warning: Citation `ref_proc1' on page 3 undefined on input line 221.
+LaTeX Warning: Citation `ref_lncs1' on page 4 undefined on input line 269.
 
 
-LaTeX Warning: Citation `ref_url1' on page 3 undefined on input line 221.
+LaTeX Warning: Citation `ref_book1' on page 4 undefined on input line 269.
 
-(/home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.bbl
-Underfull \hbox (badness 10000) in paragraph at lines 23--27
+
+LaTeX Warning: Citation `ref_article1' on page 4 undefined on input line 270.
+
+
+LaTeX Warning: Citation `ref_book1' on page 4 undefined on input line 270.
+
+
+LaTeX Warning: Citation `ref_proc1' on page 4 undefined on input line 270.
+
+
+LaTeX Warning: Citation `ref_url1' on page 4 undefined on input line 270.
+
+[4 </home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/./images/Interfaces.png>] (/home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 7--10
+[]\OT1/cmr/m/n/9 Auxier, B., An-der-son, M.: So-cial me-dia use in
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 7--10
+\OT1/cmr/m/n/9 2021 (2021), https://www.pewresearch.org/internet/wp-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 7--10
+\OT1/cmr/m/n/9 content/uploads/sites/9/2021/04/PI[]2021.04.07[]Social-Media-Use[]FINAL.pdf,
+ []
+
+
+Underfull \hbox (badness 1270) in paragraph at lines 16--20
+[]\OT1/cmr/m/n/9 eurostat: In-di-vid-u-als us-ing the in-ter-net for par-tic-i-pat-ing in so-cial net-works
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--24
+[]\OT1/cmr/m/n/9 Kemp, S.: Dig-i-tal 2022: Global overview re-port (2021),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--38
 \OT1/cmr/m/n/9 https://raw.githubusercontent.com/braid-org/braid-spec/master/draft-toomim-
  []
 
-) [3] (/home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.aux)
+) [5] (/home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 1676 strings out of 481176
- 24779 string characters out of 5914226
- 310772 words of memory out of 5000000
- 18644 multiletter control sequences out of 15000+600000
+ 1688 strings out of 481176
+ 25014 string characters out of 5914226
+ 309792 words of memory out of 5000000
+ 18653 multiletter control sequences out of 15000+600000
  408296 words of font info for 43 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  68i,9n,74p,281b,234s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.pdf (3 pages, 162291 bytes).
+Output written on /home/johny_boy/Documentos/UNI/2021_22/PIIC_ADC/Relatório/samplepaper.pdf (5 pages, 208537 bytes).
 PDF statistics:
- 62 PDF objects out of 1000 (max. 8388607)
- 44 compressed objects within 1 object stream
+ 71 PDF objects out of 1000 (max. 8388607)
+ 49 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

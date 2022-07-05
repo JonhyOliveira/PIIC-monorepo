@@ -4,6 +4,7 @@
 \documentclass[runningheads]{llncs}
 %
 \usepackage{graphicx}
+\graphicspath{ {./images} }
 % Used for displaying a sample figure. If possible, figure files should be
 % included in EPS format.
 %
@@ -14,12 +15,12 @@
 \begin{document}
 %
     \title{Web Colaborativa com Braid e CRDTs} 
-    \subtitle{Relatório Final da UC de PIIC}
+    % \subtitle{Relatório Final da UC de PIIC}
     %
     %\titlerunning{Abbreviated paper title} If the paper title is too long for
     % the running head, you can set an abbreviated paper title here
     %
-    \author{João Oliveira\\Orientado por Nuno Preguiça}
+    \author{João Oliveira\\Orientação de: Nuno Preguiça}
     %
     \authorrunning{João Oliveira, sobre orientação de Nuno Preguiça}
     % First names are abbreviated in the running head. If there are more than
@@ -31,136 +32,187 @@
     \maketitle              % typeset the header of the contribution
     %
     \begin{abstract}
-        Neste relatório é apresentado o trabalho feito ao longo da unidade
-        curricular de PIIC-ADC. Começando por uma apresentação do tema em
-        questão
+        Neste relatório exploramos as aplicações {\itshape web} colaborativas e
+        a tecnologia que as suporta. É feita uma reflexão sobre as necessidades
+        a nível tecnológico, tais como a falta de {\itshape standardização} e as
+        dificuldades associadas. Por fim é exposta uma possível solução a estes
+        problemas, através da construção de uma solução de sincronização de
+        dados.
 
-        \keywords{First keyword, Second keyword, Another keyword.}
+        \keywords{colaboração, web}
     \end{abstract}
-    %
-    %
+    
+    
     % o que este trabalho trata?
     \section{Introdução}
 
+        Nos dias de hoje, as aplicações {\itshape web} colaborativas são uma
+        parte cada vez mais importante da vida de qualquer pessoa. Desde a
+        marcação de reuniões num calendário partilhado até à realização das
+        próprias reuniões, que cada vez mais se fazem em ambientes online.
+        Também estão presentes em ambientes menos formais, como na comunicação,
+        através de aplicações de {\itshape chatting} ou redes sociais.
+
+        É evidente a popularidade deste tipo de aplicações. Na realidade, estão
+        por todo o lado e englobam muito mais do que redes sociais e calendários
+        partilhados. A colaboração deixou de ser um nicho e tornou-se o padrão
+        em qualquer tipo de aplicação.
+
+        Neste relatório exploramos a tecnologia que está por detrás das
+        aplicações {\itshape web} colaborativas e os seus defeitos.
+
+    \section{Trabalho Relacionado}
+
         % o que é a web colaborativa? (introdução ao tema)
-        \subsection{Colaboração e Aplicações {\itshape Web} Colaborativas}
+        \subsection{{\itshape Groupware} e Aplicações {\itshape Web} Colaborativas}
 
-        Geralmente, a colaboração é definida como o processo de duas ou mais
-        pessoas, entidades ou organizações trabalharem em conjunto para
-        completar uma tarefa ou atingir um objetivo \cite{collab-def}. 
-        
-        Já no contexto da informática e dos sistemas distribuidos, uma das
-        primeiras aparições do termo surgiu em 1991, com a definição de
-        {\itshape groupware} ({\itshape group} + {\itshape software}) por Ellis
-        et al.: "Especificamente, definimos groupware como: sistemas baseados em
-        computadores que suportam grupos de pessoas envolvidas numa tarefa (ou
-        objetivo) e que fornecem uma interface para um ambiente
-        partilhado"\cite{groupware-def}. 
+        Uma das primeiras definições de {\itshape software} colaborativo surgiu em
+        1991, com a designação de {\itshape groupware} ({\itshape group} +
+        {\itshape software}) por Ellis et al.: "Especificamente, definimos
+        groupware como: sistemas baseados em computadores que suportam grupos de
+        pessoas envolvidas numa tarefa (ou objetivo) e que fornecem uma
+        interface para um ambiente partilhado"\cite{groupware-def}. 
 
-        Nos dias de hoje, o {\itshape groupware} assume uma forma
-        indiscutivelmente diferente desde a sua genesis em 1991. Devido à sua
-        popularidade e abrangência, a {\itshape web} e os dispositivos moveis
-        são os mercados alvo da maioria das empresas produtoras de software.
-        Devido a isto, vemos serviços de {\itshape groupware} a aparecer mais
-        neste tipo de meios. Como exemplo temos serviços como o Google Docs,
-        Google Slides, Trello, WhatsApp, Twitter, Facebook e muitos mais a serem
-        criados todos os dias. 
+        Já nos dias de hoje, com esta área muito mais maturada, o contexto em que o
+        {\itshape groupware} se encontra é diferente. Devido ao seu alcance
+        demográfico, a {\itshape web} e os dispositivos moveis tornaram-se as
+        plataformas primárias para difundir serviços de {\itshape groupware}.
+        Como exemplo temos serviços como Google Docs, Trello,
+        WhatsApp, Facebook, GitHub e muitos mais. 
 
-        A característica que destingue as aplicações {\itshape web}
-        colaborativas de outras aplicações {\itshape web} é o facto de existir a
-        noção de um estado partilhado para o qual os utilizadores contribuem com
-        um objetivo ou propósito em vista. Pegando no exemplo do Facebook, o
-        propósito pode ser a troca de ideias e impressões nos comentários de uma
-        publicação, no caso geral, ou a divulgação de um produto no {\itshape
-        Facebook Marketplace}, por parte de um comerciante.
+        Sob este pretexto, podemos destinguir as atuais aplicações {\itshape
+        web} colaborativas de outras aplicações {\itshape web} é o facto de
+        existir a noção de um estado partilhado para o qual os utilizadores
+        contribuem com um objetivo ou propósito em vista, de forma intencional
+        ou não. Por exemplo no caso das redes sociais, o objetivo de um
+        utilizador é comentar e trocar impressões, com um ou mais utilizadores,
+        sobre um tema. Com esse objetivo em vista o utilizador contribui,
+        muitas vezes não intencionalmente, para um registo público
+        semi-permanente.
 
         % porque é que isto é releavante? (apresentação leitor<->tema)
-        % \subsection{Popularidade das Aplicações {\itshape Web} Colabrativas}
+        \subsection{Popularidade das Aplicações {\itshape Web} Colabrativas}
 
-        % Na realidade, dentro das aplicações {\itshape web} as aplicações
-        % {\itshape web} colaborativas são de longe das mais usadas e que motivam
-        % mais pessoas a usar a {\itshape web}.
+        Mesmo na enorme piscina que são as aplicações {\itshape web}, as
+        colaborativas são de longe as mais usadas e que trazem mais pessoas para
+        a {\itshape web}.
 
-        % Em 2021, 57\%\cite{eurostat-soc-media-usage} da população europeia já
-        % usou redes sociais. No mesmo ano, nos EUA, os valores apontam para tão
-        % alto quanto 70\%\cite{usa-soc-media-usage}. Já no oriente, os número não
-        % ficam muito aquém, com a China e a India com valores\footnote{É
-        % importante notar que o relatório citado usa o número de utilizadores
-        % bruto, ou seja, não filtra utilizadores falsos ou duplicados. Não
-        %obstante disso, com estas figuras podemos concluir que as redes sociais
-        %são consideravelmente populares no oriente, visto o valor obtido para a
-        % India ser o mais baixo desta região e representar por volta de 1/3 da
-        % população.} de 68\% e 34\%, respetivamente\cite{digital2022}.
+        Um estudo feito em 2021, aponta para que
+        57\%\cite{eurostat-soc-media-usage} da população europeia já tenha usado
+        redes sociais. Já nos EUA, os valores apontam para tão alto quanto
+        70\%\cite{usa-soc-media-usage}. Fora do mundo ocidental os números
+        também não ficam muito a baixo, com a China e a India com
+        valores\footnote{É importante notar que o relatório citado usa o número
+        de utilizadores bruto, ou seja, não filtra utilizadores falsos ou
+        duplicados. Não obstante disso, com estas figuras podemos concluir que
+        as redes sociais abrangem largas faixas de populações não ocidentais,
+        visto o valor obtido para a India ser o mais baixo da região asiática e
+        representar cerca de 1/3 da população.} de 68\% e 34\%,
+        respetivamente\cite{digital2022}. 
+        
 
-        % A popularidade destas aplicações é inegável. Esta popularidade devesse,
-        % em larga escala, à tecnologia que as suporta e que introduz
-        % funcionalidades críticas para a experiência de utilização. 
+    \section{Estado da Arte}
 
-        % introdução aos CRDTs
+        % a.k.a: o que é que esta treta toda tem a ver com o trabalho?
+        \subsection{Problemas de {\itshape standardização} e o Protolo Braid}
+
+        Para as aplicações {\itshape web} colaborativas é essencial a
+        sincronização de dados. Logo, a {\itshape standardização} dos protocolos
+        de comunicação que são usados para sincronizar esses mesmos dados é
+        importante para a interoperabilidade de sistemas. 
+
+        Atualmente, a falta de um protocolo de sincronização geralmente aceite
+        leva a que ao longo do desenho de uma aplicação colaborativa se recorra
+        a modelos de comunicação {\itshape ad-hoc}, tal como comunicação por
+        eventos\footnote{Por exemplo {\itshape socket.io} ou {\itshape
+        web-socket}s} ou técnicas como {\itshape long-polling}. 
+
+        % apresentação do Braid
+        O Protoclo Braid surge como resposta a este problema.
+            
+        Segundo a própria equipa Braid o protocolo Braid é "um conjunto de
+        extensões que generalizam o protocolo HTTP de um protocolo de
+        transferência de estado para um protocolo de sincronização de estado
+        [...] colocando o poder de OT e dos CRDTs na web, melhorando a
+        performance de rede e permitindo aplicações web serem nativamente
+        P2P, colaborativamente editáveis e {\itshape
+        offline-first}"\cite{braid-spec}. 
+
+        No fundo, é um protocolo de sicronização de dados que procura ser
+        {\itshape backwards-compatible} e que está em desenvolvimento no
+        contexto da IETF.
 
         \subsection{{\itshape CRDT}s}
 
-        No que toca à experiência de utilização, um dos focos no desenho de
-        aplicações {\itshape web} colaborativas é que trabalhar no ambiente
-        colaborativo da aplicação se assemelhe, tanto quanto possível, a
-        trabalhar num ambiente colaborativo tradicional. Logo, a componente de
-        sincronização de dados é das mais importantes no desenho do sistema
-        distribuído que suporta a aplicação. 
+        Outro aspeto a considerar é como os dados efetivamente são sincronizados.
 
         Os "Tipos de dados Replicados sem Conflito", habitualmente denominados
         {\itshape CRDT}s (do inglês {\itshape Conflict Free Replicated Data
         Type}s), são abstrações de tipos de dados desenhadas para permitirem a
         replicação de dados por múltiplos processos com coordenação assíncrona,
         através da troca de mensagens entre as réplicas e de métodos
-        determinísticos\cite{CRDTs}. De uma forma mais geral, os {\itshape
-        CRDT}s garantem acesso aos dados localmente, com modificações ao seu
-        estado a serem propagadas a outras réplicas de forma assíncrona e não
-        necessariamente sequencial.
+        determinísticos\cite{CRDTs}.
 
-        Assim, num sistema distribuido, os {\itshape CRDT}s garantem alta
-        disponibilidade no acesso a dados replicados, consistência e tolerância
-        a falhas de rede. Isto vem tornar a tecnologia dos {\itshape CRDT}s cada
-        vez mais atrativa, nomeadamente no desenho de um sistema que suporta
-        aplicações {\itshape web}, havendo soluções que fazem uso destes tipos
-        abstratos de dados tanto no {\itshape backend} como no {\itshape
-        frontend} das aplicações.
-
-        % a.k.a: o que é que esta treta toda tem a ver com o trabalho?
-        \subsection{Problemas de {\itshape standardização} e o Protolo Braid}
+        Mais especificamente, os {\itshape CRDT}s garantem alta disponibilidade
+        no acesso a dados replicados, consistência eventual e tolerância a
+        falhas de rede. 
         
-        Os protocolos 
+        Isto torna a tecnologia dos {\itshape CRDT}s muito atrativa,
+        especialmente para um sistema que vise suportar aplicações {\itshape
+        web} colaborativas distribuidas disponíveis {\itshape offline}. Há soluções
+        que fazem uso desta tecnologia tanto no {\itshape backend}, com bases de
+        dados replicadas de alta disponibilidade\footnote{Ver Redis
+        (https://redis.com/)}, como no {\itshape frontend} das aplicações, onde
+        se vêem certas partes de aplicações a serem replicadas por utilizadores
+        através da tecnologia dos {\itshape CRDT}s.
 
-        No entanto, no caso das aplicações {\itshape web} colaborativas, em que
-        é essencial a sincronização, a {\itshape standardização} dos protocolos
-        de comunicação fica áquem. 
+        \subsection{Bibliotecas de {\itshape CRDT}s}
+
+        De maneira a aplicar esta tecnologia ao mundo real, é necessário dotar
+        os desenvolvedores de {\itshape software} de ferramentas que lhes
+        permitam abstrair-se da complexidade do desenho da parte interna dos
+        {\itshape CRDT}s. Para tal, existem inúmeras implementações de {\itshape
+        CRDT}s que escondem a complexidade atrás de interfaces bem conhecidas,
+        como listas, dicionários, árvores, etc., e interfaces de sincronização,
+        estas que variam de implementação para implementação.
+
+        Para o teste da nossa solução iremos usar duas bibliotecas de {\itshape
+        CRDT}s que ficam abaixo descritas:
+
+        \subsubsection{Legion -} Framework concebido em 2017 que permite a
+        aplicações {\itshape web} replicar nos clientes, e de forma segura,
+        dados presentes em servidores. Funciona à base de {\itshape deltas}
+        ($\Delta$-CRDT), que representam diferenças entre o estado interno de
+        dois {\itshape CRDT}s e permitem otimizar o processo de sincronização.
+
+        \subsubsection{Automerge -} Biblioteca para sincronização de dados entre
+        dispositivos móveis. Usa os seus próprios {\itshape CRDT}s para oferecer
+        um modelo de dados de tipo {\itshape JSON}.
+
+    \section{TejoSynchronizer}
+
+        O {\itshape TejoSynchronizer} é um framework que procura facilitar o
+        trabalho do desenvolvedor de aplicações {\itshape web} colaborativas, através de uma interface que
+        {\itshape standardiza} a interação com soluções de sincronização
+        específicas, como o Legion ou o Automerge.
         
-        A falta de um protocolo de sincronização geralmente aceite leva a que as
-        soluções de sincronização recorram a modelos de comunicação {\itshape
-        ad-hoc}, tal como comunicação por eventos\footnote{Por exemplo {\itshape
-        socket.io} ou {\itshape web-socket}s} ou técnicas como {\itshape
-        long-polling}. 
+        Nomeadamente, esta solução especifica três componentes:
 
+        \begin{itemize}
+            \item \textbf{Sincronizador}: Componente associada à solução de
+            sincronização. Implementa um protocolo de sincronização e interage
+            com um ou mais mensageiros.
+            \item \textbf{Mensageiro}: Permite a troca de mensagens entre
+            sincronizadores. 
+            \item \textbf{\itshape Parser}: Faz a tradução de mensagens entre
+            formatos. Serve, por exemplo, para converter mensagens de um
+            Sincronizador para mensagens que podem ser enviadas pelo Mensageiro.
+        \end{itemize}
         
+        \includegraphics[width=\textwidth]{Interfaces.png}
 
-            % apresentação do Braid
-
-            \subsubsection{Braid:} Como resposta a este problema da falta de
-            estandardização, têm aparecido de comunidades como a "Braid", que
-            imaginam um futuro em que as aplicações comunicam de uma forma clara
-            e coesa, através de um único protocolo, permitindo integração nativa
-            com outras aplicações.
-
-            Mais concretamente, a comunidade Braid está a desenvolver um
-            protocolo no contexto da IETF, convenientemente chamado Braid. 
-
-            Segundo o {\itshape draft} para a IETF, o protocolo Braid é "um
-            conjunto de extensões que generalizam o protocolo HTTP de um
-            protocolo de transferência de estado para um protocolo de
-            sincronização de estado [...] colocando o poder de OT e dos CRDTs na
-            web, melhorando a performance de rede e permitindo aplicações web
-            serem nativamente P2P, colaborativamente editáveis e {\itshape
-            offline-first}"\cite{braid-spec}. 
-
+        Um aspeto importante é o facto de tanto o Sincronizador como o
+        Mensageiro são emissores de eventos.
 
         \paragraph{Sample Heading (Fourth Level)}
         The contribution should contain no more than four levels of headings.
